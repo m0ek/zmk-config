@@ -1,3 +1,33 @@
-&nice_view_spi {
+#include <dt-bindings/zmk/matrix_transform.h>
+
+&pinctrl {
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 17)>,
+                    <NRF_PSEL(SPIM_MISO, 0, 25)>;
+        };
+    };
+};
+
+&spi3 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-names = "default";
     cs-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+
+    nice_view: ls013b7dh03@0 {
+        compatible = "sharp,ls013b7dh03";
+        reg = <0>;
+        spi-max-frequency = <1000000>;
+        width = <160>;
+        height = <68>;
+    };
+};
+
+/ {
+    chosen {
+        zephyr,display = &nice_view;
+    };
 };
