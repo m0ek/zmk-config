@@ -1,14 +1,16 @@
 file_format: "1"
-id: lily58
+id: Lily58
 name: Lily58
 type: shield
-url: https://github.com/kata0510/Lily58
-requires: [pro_micro]
+url: https://pandakb.com
+requires: [nice!nano]
 exposes: [i2c_oled]
 features:
   - keys
   - display
   - studio
+  - underglow
+  - encoder
 siblings:
-  - lily58_left
-  - lily58_right
+  - Lily58_left
+  - Lily58_right
